@@ -2,4 +2,5 @@ google-api-python-client
 google-auth
 google-auth-httplib2
 google-cloud-logging
+google-cloud-monitoring
 

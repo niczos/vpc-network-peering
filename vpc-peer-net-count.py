@@ -8,14 +8,23 @@ from google.cloud import pubsub_v1
 import os
 
 
-# SET YOUR OWN VARIABLES
-SERVICE_ACCOUNT_FILE = '<Path to your key file (in json) for service account>'
-PEERING_NAME         = '<Name of peering connection>'
-DIRECTION            = '<The direction of the exchanged routes - INCOMING or OUTGOING>'
-NETWORK              = '<Name of the network for this request>'
-PROJECT_ID           = '<Project ID for this request>'
-REGION               = '<The region of the request>'
-TOPIC_PATH           = '<Path to your topic in PubSub>'
+# # SET YOUR OWN VARIABLES
+# SERVICE_ACCOUNT_FILE = '<Path to your key file (in json) for service account>'
+# PEERING_NAME         = '<Name of peering connection>'
+# DIRECTION            = '<The direction of the exchanged routes - INCOMING or OUTGOING>'
+# NETWORK              = '<Name of the network for this request>'
+# PROJECT_ID           = '<Project ID for this request>'
+# REGION               = '<The region of the request>'
+# TOPIC_PATH           = '<Path to your topic in PubSub>'
+
+# SET YOUR OWN VARIABLES.
+SERVICE_ACCOUNT_FILE = 'key-peer-my.json'  # path to your key file (json format) for service account
+PEERING_NAME = 'vpc12peer' # Name of peering connection
+DIRECTION = 'INCOMING' # The direction of the exchanged routes - INCOMING or OUTGOING
+NETWORK = 'vpc-1' # Name of the network for this request.
+PROJECT_ID = 'rational-moon-320316' # Project ID for this request.
+REGION = "us-central1" # The region of the request. 
+TOPIC_PATH = 'projects/rational-moon-320316/topics/vpc-network-topic'
 
 # Sets environment variable
 try:
@@ -52,7 +61,7 @@ if 'items' in response:
     future = publisher.publish(TOPIC_PATH, text)  # message id
     print(f'published message id {future.result()}')
 
-    if length > 50:
+    if length > 30:
         error = "Too many peered networks - max 50."
         logger.log_text(error, severity="ERROR")
         error = error.encode('utf-8')
