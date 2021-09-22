@@ -6,7 +6,7 @@ The script `metric-vpc.py` counts VPC peered networks and creates metric to moni
 
 ## Requirements
 
- ### Required: Python3
+ ### Required: Python3, Enable monitoring API 
 To install neccesary dependencies run command:
 ```python
 pip install -r requirements.txt
