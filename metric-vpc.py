@@ -9,13 +9,31 @@ import time
 import os
 
 # SET YOUR OWN VARIABLES.
-SERVICE_ACCOUNT_FILE = '<Path to your key file (in json) for service account>'
-PEERING_NAME         = '<Name of peering connection>'
-DIRECTION            = '<The direction of the exchanged routes - INCOMING or OUTGOING>'
-NETWORK              = '<Name of the network for this request>'
-PROJECT_ID           = '<Project ID for this request>'
-REGION               = '<The region of the request>'
-METRIC_NAME          = "number-of-peered-networks-metric" # change if needed
+SERVICE_ACCOUNT_FILE = 'key-peer-my.json'  # path to your key file (json format) for service account
+PEERING_NAME         = 'vpc12peer'  # Name of peering connection
+DIRECTION            = 'OUTGOING'  # The direction of the exchanged routes - INCOMING or OUTGOING
+NETWORK              = 'vpc-1'  # Name of the network for this request.
+PROJECT_ID           = 'rational-moon-320316'  # Project ID for this request.
+REGION               = "us-central1"  # The region of the request.
+METRIC_NAME          = "number-of-peered-networks-metric"  # change if needed
+
+# # SET YOUR OWN VARIABLES.
+# SERVICE_ACCOUNT_FILE = 'peer-key.json'  # path to your key file (json format) for service account
+# PEERING_NAME         = 'gke-ne95e258846a5558cf3f-65e9-e225-peer'  # Name of peering connection
+# DIRECTION            = 'OUTGOING'  # The direction of the exchanged routes - INCOMING or OUTGOING
+# NETWORK              = 'vpc-hub-001'  # Name of the network for this request.
+# PROJECT_ID           = 'sharedvpc-hub-9696'  # Project ID for this request.
+# REGION               = "us-central1"  # The region of the request.
+# METRIC_NAME          = "number-of-peered-networks-metric"  # change if needed
+
+# # SET YOUR OWN VARIABLES.
+# SERVICE_ACCOUNT_FILE = '<Path to your key file (in json) for service account>'
+# PEERING_NAME         = '<Name of peering connection>'
+# DIRECTION            = '<The direction of the exchanged routes - INCOMING or OUTGOING>'
+# NETWORK              = '<Name of the network for this request>'
+# PROJECT_ID           = '<Project ID for this request>'
+# REGION               = '<The region of the request>'
+# METRIC_NAME          = "number-of-peered-networks-metric" # change if needed
 
 # Sets environment variable
 try:
