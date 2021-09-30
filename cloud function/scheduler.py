@@ -17,7 +17,7 @@ job = {
         'topic_name': f'projects/{project_id}/topics/vpc-network-peer-topic',
         'data': b'run-script'
     },
-    'schedule': '*/30 * * * *',  # Job will be executed every minute
+    'schedule': '*/30 * * * *',  # Job will be executed every 30 minutes
     'time_zone': 'US/Central'  # The time zone to be used in interpreting schedule.
 }
 
