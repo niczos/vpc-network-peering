@@ -7,7 +7,7 @@ provider "google" {
 }
 
 locals {
-  project_id = "rational-moon-320316,	my-project-scope-327709"
+  project_id = "rational-moon-320316,my-project-scope-327709"
 }
 
 # SA and keys
@@ -52,6 +52,36 @@ resource "google_storage_bucket_object" "archive" {
   name   = "metric.zip"
   bucket = google_storage_bucket.bucket.name
   source = "metric.zip"
+}
+
+#trigger
+
+resource "google_project_service_identity" "sm_sa" {
+  provider = google-beta
+  project = var.project_id
+  service = "secretmanager.googleapis.com"
+}
+
+resource "google_project_iam_member" "pubsub_publisher" {
+  project = var.project_id
+  role    = "roles/pubsub.publisher"
+  member  = format("serviceAccount:%s", google_project_service_identity.sm_sa.email)
+}
+
+resource "google_secret_manager_secret" "secret-basic" {
+  secret_id = "secret"
+  replication {
+	automatic = true
+  }
+  topics {
+	  name = "projects/${var.project_id}/topics/${google_pubsub_topic.topic.name}"
+  }
+  rotation {
+	next_rotation_time = timeadd(timestamp(), "10m")
+  	rotation_period = "3600s"
+  }
+project = var.project_id
+depends_on = [google_project_iam_member.pubsub_publisher]
 }
 
 resource "google_cloudfunctions_function" "function" {
