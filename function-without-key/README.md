@@ -1,0 +1,1 @@
+SA must to have permissions in all projects (for each in `google_project_iam_binding`). Every project should have enable Compute Engine API . Cloud function should have `environment_variables` with list of projects and `service_acount_email` and in the scope to work without key.
