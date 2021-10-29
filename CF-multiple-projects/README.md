@@ -14,7 +14,7 @@ To get neccesarry packages to use `scheduler.py` run this command in the command
 ```python
 pip3 install google-cloud-scheduler
 ```
-To deploy Cloud function in the command line run:
+To deploy Cloud function set your own variables and in the command line run:
 ```python
 python3 scheduler.py
 ```
